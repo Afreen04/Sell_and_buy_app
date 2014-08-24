@@ -1,0 +1,43 @@
+<% layout( 'layout' ) -%>
+
+<h1 id="page-title"><%= title %></h1>
+<div id="list">
+  <!--<form action="/create" method="post" accept-charset="utf-8">
+    <div class="item-new">
+      <input class="input" type="text" name="content" />
+    </div>
+  </form>
+-->
+<% items.forEach( function ( item ){ %>
+  <% if( item._id == current ){ %>
+  <div class="item-new">
+  <% }else{ %>
+  <div class="item">
+  <% } %>
+
+  
+    <form class="update-form" action="/update/<%= item._id %>/<%= ctg %>" method="post" accept-charset="utf-8">
+      Your Bid: <input class="update-input" type="number" name="name" value="<%= item.min_cost %>" />  <!-- THE val of name is the param passed to index.js -->
+    </form>
+   <% items.forEach( function ( item ){ %>
+  <div class="item">
+<table>
+    <tr><th><a><%= item.name %></a></th></tr>
+    <tr><td><a><%= item.Desc %></a></td></tr>
+    <tr><td><a><%= item.Posted %></a></td></tr>
+    <tr><td><a><%= item.min_cost %></a></td></tr>
+    <tr><td><a><%= item.name %></a></td></tr>
+    <tr><td><a><%= item.Academic %></a></td></tr>
+    </table>
+    </a>
+  </div>
+<% }); %>
+<!--
+    <% if( item._id == current ){ %>
+    <a class="del-btn-edit" href="/destroy/<%= item._id %>" title="Delete this item item">Delete</a>
+    <% }else{ %>
+    <a class="del-btn" href="/destroy/<%= item._id %>" title="Delete this item item">Delete</a>
+    <% } %>
+  </div>-->
+<% }); %>
+</div>
